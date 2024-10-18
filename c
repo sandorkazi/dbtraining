@@ -1,14 +1,12 @@
 #!/bin/bash
 
-set -e
+set -e -x
+
+
+VENV_PATH=./work/venv
+MODULE=dbtraining
 
 function init_venv() {
-  #!/bin/bash
-
-  set -e
-
-  VENV_PATH=./work/venv
-
   if [ -d "${VENV_PATH}" ]; then
     echo "venv directory already exists... skipping creation..."
   else
@@ -42,8 +40,6 @@ function run_cmd() {
   ) || (echo "Can't find cli command: ${cli_cmd}"; exit 1)
 }
 
-
-VENV_PATH=./work/venv
 
 if [ -z "${@}" ]; then
   init_venv
